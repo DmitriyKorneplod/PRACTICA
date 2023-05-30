@@ -28,7 +28,7 @@
 	<TextBox Text="{Binding Login}"></TextBox>
 	<TextBlock>Пароль</TextBlock>
 	<TextBox Text="{Binding Password}" PasswordChar="*"></TextBox>
-	<Button Command="{Binding AuthCommand}">Вход</Button>
+	<Button Command="{Binding Auth}">Вход</Button>
 	<TextBlock Text="{Binding Message}"></TextBlock>
 </StackPanel>
 </Window>

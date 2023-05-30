@@ -15,7 +15,7 @@ public partial class TransportCompanyContext : DbContext
     {
     }
 
-    public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<Transport> Transports { get; set; }
 
     public virtual DbSet<Route> Routes { get; set; }
 
@@ -27,7 +27,7 @@ public partial class TransportCompanyContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>(entity =>
+        modelBuilder.Entity<Transport>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("product_PK");
 
