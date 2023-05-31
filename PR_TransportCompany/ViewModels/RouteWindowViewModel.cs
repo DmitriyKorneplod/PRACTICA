@@ -12,11 +12,11 @@ namespace PR_TransportCompany.ViewModels
 {
     public class RouteWindowViewModel : ViewModelBase
     {
-        private ObservableCollection<Route> _Routes ;
+        private ObservableCollection<Route> _routes ;
         public ObservableCollection<Route> Routes
         {
-            get => _Routes;
-            set => this.RaiseAndSetIfChanged(ref _Routes, value);
+            get => _routes;
+            set => this.RaiseAndSetIfChanged(ref _routes, value);
         }
         public User user { get; set; }
         public RouteWindowViewModel()

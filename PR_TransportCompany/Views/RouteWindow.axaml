@@ -8,12 +8,22 @@
 		x:DataType="vm:RouteWindowViewModel"
         Title="Route">
 	<DockPanel>
-		<ListBox Items="{Binding Route}">
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+			<TextBlock Text="Текущий пользователь:"></TextBlock>
+			<TextBlock Text="{Binding user.Login}" VerticalAlignment="Bottom"></TextBlock>
+		</StackPanel>
+		<ListBox Items="{Binding Routes}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<StackPanel>
+					<StackPanel Orientation="Horizontal">
+						
+						<TextBlock Foreground="Red" Text="{Binding Product}"></TextBlock>
+						<TextBlock Text=" - Транспорт: "></TextBlock>
 						<TextBlock Text="{Binding Transport}"></TextBlock>
-						<TextBlock Text="{Binding Product}"></TextBlock>
+						<TextBlock Text=", Маршрут: "></TextBlock>
+						<TextBlock Text="{Binding PointOfDeparture}"></TextBlock>
+						<TextBlock Text=" - "></TextBlock>
+						<TextBlock Text="{Binding PointOfStay}"></TextBlock>
 					</StackPanel>
 				</DataTemplate>
 			</ListBox.ItemTemplate>

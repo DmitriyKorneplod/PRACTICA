@@ -38,11 +38,11 @@ namespace PR_TransportCompany.ViewModels
             else
             {
                 Message = string.Empty;
-                MainWindow mainWindow = new MainWindow()
+                RouteWindow RouteWindow = new RouteWindow()
                 {
-                    DataContext = new MainWindowViewModel(user)
+                    DataContext = new RouteWindowViewModel(user)
                 };
-                mainWindow.Show();
+                RouteWindow.Show();
                 Owner.Close();
             }
         }
