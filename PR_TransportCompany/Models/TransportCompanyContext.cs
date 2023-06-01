@@ -15,7 +15,7 @@ public partial class TransportCompanyContext : DbContext
     {
     }
 
-    public virtual DbSet<Transport> Transports { get; set; }
+    public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<Route> Routes { get; set; }
 
@@ -23,11 +23,11 @@ public partial class TransportCompanyContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=192.168.0.1\\SQLEXPRESS;User=is51_0;Password=12345678Aa;Database=transport_company;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=192.168.0.1\\SQLEXPRESS;User = is51_0;Password=12345678Aa;Database=Transport_Company;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Transport>(entity =>
+        modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("product_PK");
 

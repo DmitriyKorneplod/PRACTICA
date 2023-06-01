@@ -12,6 +12,13 @@
 			<TextBlock Text="Текущий пользователь:"></TextBlock>
 			<TextBlock Text="{Binding user.Login}" VerticalAlignment="Bottom"></TextBlock>
 		</StackPanel>
+			<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Command="{Binding Save}">Сохранить</Button>
+				<Button Command="{Binding Change}">Изменить</Button>
+				<Button Command="{Binding Update}">Обновить</Button>
+				<Button Command="{Binding Delete}">Удалить</Button>
+			
+		</StackPanel>
 		<ListBox Items="{Binding Routes}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
@@ -25,6 +32,7 @@
 						<TextBlock Text=" - "></TextBlock>
 						<TextBlock Text="{Binding PointOfStay}"></TextBlock>
 					</StackPanel>
+
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>

@@ -21,7 +21,7 @@ namespace PR_TransportCompany.ViewModels
         public User user { get; set; }
         public RouteWindowViewModel()
         {
-            TransportCompanyContext dbContext = new TransportCompanyContext();
+            dbContext = new TransportCompanyContext();
             dbContext.Routes.Load();
             dbContext.Users.Load();
             Routes = dbContext.Routes.Local.ToObservableCollection();
@@ -30,5 +30,22 @@ namespace PR_TransportCompany.ViewModels
         {
             this.user = user;
         }
+        public void Save()
+        {
+
+        }
+        public void Change()
+        {
+
+        }
+        public void Update()
+        {
+
+        }
+        public void Delete()
+        {
+
+        }
+        private TransportCompanyContext dbContext;
     }
 }

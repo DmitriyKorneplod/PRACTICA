@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PR_TransportCompany.Models;
 
-public partial class Transport
+public partial class Product
 {
     public int Id { get; set; }
 
