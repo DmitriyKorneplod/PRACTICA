@@ -30,5 +30,6 @@
 	<TextBox Text="{Binding Password}" PasswordChar="*"></TextBox>
 	<Button Command="{Binding Auth}">Вход</Button>
 	<TextBlock Text="{Binding Message}"></TextBlock>
+
 </StackPanel>
 </Window>
