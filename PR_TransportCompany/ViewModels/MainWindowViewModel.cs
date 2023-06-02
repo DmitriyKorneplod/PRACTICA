@@ -9,8 +9,8 @@ namespace PR_TransportCompany.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private ObservableCollection<Route> _products;
-        public ObservableCollection<Route> Products
+        private ObservableCollection<Product> _products;
+        public ObservableCollection<Product> Products
         {
             get => _products;
             set => this.RaiseAndSetIfChanged(ref _products, value);
@@ -20,8 +20,8 @@ namespace PR_TransportCompany.ViewModels
         {
             dbContext = new TransportCompanyContext();
             dbContext.Users.Load();
-            dbContext.Routes.Load();
-            Products = dbContext.Routes.Local.ToObservableCollection();
+            dbContext.Products.Load();
+            Products = dbContext.Products.Local.ToObservableCollection();
         }
         public MainWindowViewModel(User user) : this()
         {
@@ -34,7 +34,7 @@ namespace PR_TransportCompany.ViewModels
         public void Change()
         {
             MainEditWindow editProducts = new MainEditWindow();
-            editProducts.DataContext = new MainEditWindowViewModel(editProducts);
+            editProducts.DataContext = new MainEditWindowViewModel(editProducts,SelectedProduct);
             editProducts.ShowDialog(Owner);
             editProducts.Closed += (sender, args) =>
             {
@@ -43,7 +43,9 @@ namespace PR_TransportCompany.ViewModels
         }
         public void Update()
         {
-
+            var old = Products;
+            Products = null!;
+            Products = old;
         }
         public void Delete()
         {
@@ -54,7 +56,7 @@ namespace PR_TransportCompany.ViewModels
         public void Create()
         {
            MainEditWindow editProducts = new MainEditWindow();
-            editProducts.DataContext = new MainEditWindowViewModel(editProducts);
+            editProducts.DataContext = new MainEditWindowViewModel(editProducts, Products);
             editProducts.ShowDialog(Owner);
             editProducts.Closed += (sender, args) =>
             {

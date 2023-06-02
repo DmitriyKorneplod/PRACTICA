@@ -3,18 +3,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="PR_TransportCompany.Views.MainEditWindow"
-        Title="MainEditWindow">
+        x:Class="PR_TransportCompany.Views.RouteEditWindow"
+        Title="RouteEditWindow">
 	<DockPanel Margin="15">
-		
+
 		<StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
 			<Button Command="{Binding OK}">Ок</Button>
 		</StackPanel>
 		<StackPanel>
-			<TextBlock>Название</TextBlock>
-			<TextBox Text="{Binding product.Name}"></TextBox>
-			<TextBlock>Производитель</TextBlock>
-			<TextBox Text="{Binding product.Manufacturer}"></TextBox>
+			<TextBlock>Продукт</TextBlock>
+			<TextBox Text="{Binding route.Product}"></TextBox>
+			<TextBlock>Точка отправления</TextBlock>
+			<TextBox Text="{Binding route.PointOfDeparture}"></TextBox>
+			<TextBlock>Точка прибытия</TextBlock>
+			<TextBox Text="{Binding route.PointOfStay}"></TextBox>
+			<TextBlock>Транспорт</TextBlock>
+			<TextBox Text="{Binding route.Transport}"></TextBox>
 		</StackPanel>
 	</DockPanel>
 </Window>

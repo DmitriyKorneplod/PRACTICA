@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PR_TransportCompany.Models;
+using PR_TransportCompany.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -26,26 +27,61 @@ namespace PR_TransportCompany.ViewModels
             dbContext.Users.Load();
             Routes = dbContext.Routes.Local.ToObservableCollection();
         }
+
+        public RouteWindow Owner;
+        public RouteWindowViewModel(User user, RouteWindow owner) : this(user)
+        {
+            this.Owner = owner;
+        }
+
         public RouteWindowViewModel(User user) : this()
         {
             this.user = user;
         }
         public void Save()
         {
-
+            dbContext.SaveChanges();
         }
         public void Change()
         {
-
+            RouteEditWindow editRoutes = new RouteEditWindow();
+            editRoutes.DataContext = new RouteEditWindowViewModel(editRoutes, SelectedRoute);
+            editRoutes.ShowDialog(Owner);
+            editRoutes.Closed += (sender, args) =>
+            {
+                ReloadWindow();
+            };
         }
         public void Update()
         {
-
+            var old = Routes;
+            Routes = null!;
+            Routes = old;
         }
         public void Delete()
         {
-
+            Routes.Remove(SelectedRoute);
         }
+        public Route SelectedRoute { get; set; }
         private TransportCompanyContext dbContext;
+        public void Create()
+        {
+            RouteEditWindow editRoutes = new RouteEditWindow();
+            editRoutes.DataContext = new RouteEditWindowViewModel(editRoutes, Routes);
+            editRoutes.ShowDialog(Owner);
+            editRoutes.Closed += (sender, args) =>
+            {
+                ReloadWindow();
+            };
+        }
+        public void ReloadWindow()
+        {
+            var old = Routes;
+            Routes = null!;
+            Routes = old;
+        }
+        
+
+        
     }
 }

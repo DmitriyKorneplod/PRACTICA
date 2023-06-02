@@ -31,20 +31,41 @@ namespace PR_TransportCompany.ViewModels
         {
             TransportCompanyContext dbContext = new TransportCompanyContext();
             User? user = dbContext.Users.Where(u => u.Login == Login && u.Password == Password).FirstOrDefault();
-            if (user == null)
+            if (user !=null) 
             {
-                Message = "Неправиильный логин или пароль!";
-            }
-            else
-            {
-                Message = string.Empty;
-                RouteWindow RouteWindow = new RouteWindow()
+                if (user.Rank == "администратор")
                 {
-                    DataContext = new RouteWindowViewModel(user)
-                };
-                RouteWindow.Show();
-                Owner.Close();
+                    OpenProduct(user);
+                }
+                if (user.Rank == "пользователь")
+                {
+                    OpenRoute(user);
+                }
+                else
+                {
+                    Message = "Неправиильный логин или пароль!";
+                }
+
+
             }
         }
+
+        private void OpenProduct(User user) 
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.DataContext = new MainWindowViewModel(user, mainWindow);
+            mainWindow.Show();
+            Owner.Close();
+
+        }
+
+        private void OpenRoute(User user)
+        {
+            RouteWindow routeWindow = new RouteWindow();
+            routeWindow.DataContext = new RouteWindowViewModel(user, routeWindow);
+            routeWindow.Show();
+            Owner.Close();
+        }
+
     }
 }

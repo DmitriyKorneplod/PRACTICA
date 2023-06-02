@@ -17,9 +17,10 @@
 				<Button Command="{Binding Change}">Изменить</Button>
 				<Button Command="{Binding Update}">Обновить</Button>
 				<Button Command="{Binding Delete}">Удалить</Button>
+				<Button Command="{Binding Create}">Создать</Button>
 			
 		</StackPanel>
-		<ListBox Items="{Binding Routes}">
+		<ListBox Items="{Binding Routes}" SelectedItem="{Binding SelectedRoute}" SelectionMode="Single">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">

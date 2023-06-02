@@ -12,4 +12,6 @@ public partial class User
     public string Password { get; set; } = null!;
 
     public string? Fio { get; set; }
+
+    public string? Rank { get; set; }
 }

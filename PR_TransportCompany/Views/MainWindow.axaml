@@ -33,7 +33,7 @@
 				<DataTemplate>
 					<StackPanel>
 						<TextBlock Text="{Binding Name}" ></TextBlock>
-					<TextBlock Text="{Binding Price}"></TextBlock>
+					<TextBlock Text="{Binding Manufacturer}"></TextBlock>
 						
 					</StackPanel>
 					

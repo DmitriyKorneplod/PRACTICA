@@ -4,7 +4,9 @@ using PR_TransportCompany.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,10 +33,18 @@ namespace PR_TransportCompany.ViewModels
         {
             this.product = product ;
         }
+        private ObservableCollection<Product> Products;
+        public MainEditWindowViewModel( MainEditWindow owner, ObservableCollection<Product> products ) : this(owner)
+        {
+            this.Products = products ;
+        }
         public void OK()
         {
             Owner.Close();
-
+            if (Products != null) 
+            {
+                Products.Add(product);
+            }
         }
 
     }
