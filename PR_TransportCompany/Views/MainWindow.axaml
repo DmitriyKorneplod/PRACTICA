@@ -7,7 +7,7 @@
         x:Class="PR_TransportCompany.Views.MainWindow"
 		x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="PR_TransportCompany">
+        Title="Products">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -18,13 +18,21 @@
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
 			<TextBlock Text="Текущий пользователь:"></TextBlock>
 		<TextBlock Text="{Binding user.Login}"  VerticalAlignment="Bottom"></TextBlock>
+			
 			</StackPanel>
-		<ListBox Items="{Binding Products}">
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Command="{Binding Save}">Сохранить</Button>
+			<Button Command="{Binding Change}">Изменить</Button>
+			<Button Command="{Binding Update}">Обновить</Button>
+			<Button Command="{Binding Delete}">Удалить</Button>
+        </StackPanel>
+		  <ListBox Items="{Binding Products}" SelectedItem="{Binding SelectedProduct}" SelectionMode="Single">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel>
 						<TextBlock Text="{Binding Name}" ></TextBlock>
 					<TextBlock Text="{Binding Price}"></TextBlock>
+						
 					</StackPanel>
 					
 				</DataTemplate>
