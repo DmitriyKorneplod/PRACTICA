@@ -25,6 +25,8 @@
 			<Button Command="{Binding Change}">Изменить</Button>
 			<Button Command="{Binding Update}">Обновить</Button>
 			<Button Command="{Binding Delete}">Удалить</Button>
+			<Button Command="{Binding Create}">Создать</Button>
+			
         </StackPanel>
 		  <ListBox Items="{Binding Products}" SelectedItem="{Binding SelectedProduct}" SelectionMode="Single">
 			<ListBox.ItemTemplate>

@@ -34,6 +34,7 @@ namespace PR_TransportCompany.ViewModels
         public void OK()
         {
             Owner.Close();
+
         }
 
     }

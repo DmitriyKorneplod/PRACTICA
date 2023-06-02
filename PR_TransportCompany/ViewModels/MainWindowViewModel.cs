@@ -27,19 +27,25 @@ namespace PR_TransportCompany.ViewModels
         {
             this.user = user;
         }
-        public void Save ()
+        public void Save()
         {
             dbContext.SaveChanges();
         }
-        public void Change ()
+        public void Change()
+        {
+            MainEditWindow editProducts = new MainEditWindow();
+            editProducts.DataContext = new MainEditWindowViewModel(editProducts);
+            editProducts.ShowDialog(Owner);
+            editProducts.Closed += (sender, args) =>
+            {
+                ReloadWindow();
+            };
+        }
+        public void Update()
         {
 
         }
-        public void Update ()
-        {
-
-        }
-        public void Delete ()
+        public void Delete()
         {
             Products.Remove(SelectedProduct);
         }
@@ -47,23 +53,26 @@ namespace PR_TransportCompany.ViewModels
         private TransportCompanyContext dbContext;
         public void Create()
         {
-            Product newProduct = new Product();
-            MainEditWindow editProducts = new MainEditWindow();
-            Products.Add(newProduct);
-            editProducts.DataContext = new MainEditWindowViewModel(newProduct, editProducts);
+           MainEditWindow editProducts = new MainEditWindow();
+            editProducts.DataContext = new MainEditWindowViewModel(editProducts);
             editProducts.ShowDialog(Owner);
             editProducts.Closed += (sender, args) =>
             {
                 ReloadWindow();
             };
         }
-        public void ReloadWindow ()
+        public void ReloadWindow()
         {
             var old = Products;
             Products = null;
             Products = old;
         }
-        }
+        public MainWindow Owner;
+        public MainWindowViewModel(User user, MainWindow owner) : this(user) 
+            {
+             this.Owner = owner;
+            }
+        
 
         
         

@@ -5,7 +5,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="PR_TransportCompany.Views.MainEditWindow"
         Title="MainEditWindow">
-	<Dockpanel>
-		
-	</Dockpanel>
+	<DockPanel>
+		<StackPanel>
+		<Button Command="{Binding OK}"></Button>
+		</StackPanel>
+	</DockPanel>
 </Window>
