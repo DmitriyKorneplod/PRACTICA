@@ -7,8 +7,8 @@ namespace PR_TransportCompany.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private ObservableCollection<Product> _products;
-        public ObservableCollection<Product> Products
+        private ObservableCollection<Route> _products;
+        public ObservableCollection<Route> Products
         {
             get => _products;
             set => this.RaiseAndSetIfChanged(ref _products, value);
@@ -18,8 +18,8 @@ namespace PR_TransportCompany.ViewModels
         {
             TransportCompanyContext dbContext = new TransportCompanyContext();
             dbContext.Users.Load();
-            dbContext.Products.Load();
-            Products = dbContext.Products.Local.ToObservableCollection();
+            dbContext.Routes.Load();
+            Products = dbContext.Routes.Local.ToObservableCollection();
         }
         public MainWindowViewModel(User user) : this()
         {

@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:PR_TransportCompany.ViewModels"
+        mc:Ignorable=" d " d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PR_TransportCompany.Views.RouteWindow"
+		x:DataType="vm:RouteWindowViewModel"
+        Title="Route">
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+			<TextBlock Text="Текущий пользователь:"></TextBlock>
+			<TextBlock Text="{Binding user.Login}" VerticalAlignment="Bottom"></TextBlock>
+		</StackPanel>
+			<StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Command="{Binding Save}">Сохранить</Button>
+				<Button Command="{Binding Change}">Изменить</Button>
+				<Button Command="{Binding Update}">Обновить</Button>
+				<Button Command="{Binding Delete}">Удалить</Button>
+			
+		</StackPanel>
+		<ListBox Items="{Binding Routes}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						
+						<TextBlock Foreground="Red" Text="{Binding Product}"></TextBlock>
+						<TextBlock Text=" - Транспорт: "></TextBlock>
+						<TextBlock Text="{Binding Transport}"></TextBlock>
+						<TextBlock Text=", Маршрут: "></TextBlock>
+						<TextBlock Text="{Binding PointOfDeparture}"></TextBlock>
+						<TextBlock Text=" - "></TextBlock>
+						<TextBlock Text="{Binding PointOfStay}"></TextBlock>
+					</StackPanel>
+
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</DockPanel>
+
+</Window>
